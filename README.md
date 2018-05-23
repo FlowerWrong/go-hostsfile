@@ -1,8 +1,8 @@
 # Hostsfile
 
-[![Documentation](https://godoc.org/github.com/jaytaylor/go-hostsfile?status.svg)](https://godoc.org/github.com/jaytaylor/go-hostsfile)
-[![Build Status](https://travis-ci.org/jaytaylor/go-hostsfile.svg)](https://travis-ci.org/jaytaylor/go-hostsfile)
-[![Report Card](https://goreportcard.com/badge/jaytaylor/go-hostsfile)](https://goreportcard.com/report/jaytaylor/go-hostsfile)
+[![Documentation](https://godoc.org/github.com/FlowerWrong/go-hostsfile?status.svg)](https://godoc.org/github.com/FlowerWrong/go-hostsfile)
+[![Build Status](https://travis-ci.org/FlowerWrong/go-hostsfile.svg)](https://travis-ci.org/FlowerWrong/go-hostsfile)
+[![Report Card](https://goreportcard.com/badge/FlowerWrong/go-hostsfile)](https://goreportcard.com/report/FlowerWrong/go-hostsfile)
 
 ### The /etc/hosts parsing and resolver library for golang
 
@@ -18,7 +18,7 @@ works in cases where the IP mapping exists in the hostsfile.
 
 ## Get it
 
-    go get -u https://github.com/jaytaylor/go-hostsfile
+    go get -u https://github.com/FlowerWrong/go-hostsfile
 
 ## Usage
 
@@ -28,7 +28,7 @@ package main
 import (
     "fmt"
 
-    "github.com/jaytaylor/go-hostsfile"
+    "github.com/FlowerWrong/go-hostsfile"
 )
 
 func main() {
@@ -76,4 +76,3 @@ It's always nice to hear from people who have benefitted from my work.
 Email: jay at (my github username).com
 
 Twitter: @jtaylor
-

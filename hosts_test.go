@@ -3,7 +3,7 @@ package hostsfile_test
 import (
 	"testing"
 
-	"github.com/jaytaylor/go-hostsfile"
+	"github.com/FlowerWrong/go-hostsfile"
 )
 
 func TestHostsReverseLookup(t *testing.T) {
@@ -100,5 +100,15 @@ fe80::1%lo0	localhost
 				t.Errorf("[i=%v] Expected '%v' to be absent from res but actual=%+v", i, forbiddenEntry, reverses)
 			}
 		}
+	}
+}
+
+func TestHostsLookup(t *testing.T) {
+	res, err := hostsfile.Lookup("dev.local")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(res) == 0 {
+		t.Errorf("Expected len(res) > 0 but actaul=%v res=%+v", len(res), res)
 	}
 }

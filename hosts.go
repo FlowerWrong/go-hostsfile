@@ -48,3 +48,36 @@ func ReverseLookup(ip string) ([]string, error) {
 	}
 	return hostsMap[ip], nil
 }
+
+// ParseHostsToDomainIPMap takes in hosts file content and returns a map of parsed results.
+func ParseHostsToDomainIPMap(hostsFileContent []byte, err error) (map[string]string, error) {
+	if err != nil {
+		return nil, err
+	}
+	hostsMap := map[string]string{}
+	for _, line := range strings.Split(strings.Trim(string(hostsFileContent), " \t\r\n"), "\n") {
+		line = strings.Replace(strings.Trim(line, " \t"), "\t", " ", -1)
+		if len(line) == 0 || line[0] == ';' || line[0] == '#' {
+			continue
+		}
+		pieces := strings.SplitN(line, " ", 2)
+		if len(pieces) > 1 && len(pieces[0]) > 0 {
+			if names := strings.Fields(pieces[1]); len(names) > 0 {
+				// pieces[0] is ip address
+				for _, name := range names {
+					hostsMap[name] = pieces[0]
+				}
+			}
+		}
+	}
+	return hostsMap, nil
+}
+
+// Lookup takes an domain and returns a ip address
+func Lookup(domain string) (string, error) {
+	hostsMap, err := ParseHostsToDomainIPMap(ReadHostsFile())
+	if err != nil {
+		return "", err
+	}
+	return hostsMap[domain], nil
+}
